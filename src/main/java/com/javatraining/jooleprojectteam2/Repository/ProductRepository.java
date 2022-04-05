@@ -1,6 +1,6 @@
-package Repository;
+package com.javatraining.jooleprojectteam2.Repository;
 
-import Entity.Product;
+import com.javatraining.jooleprojectteam2.Entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

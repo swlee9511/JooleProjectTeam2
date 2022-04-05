@@ -1,4 +1,4 @@
-package Entity;
+package com.javatraining.jooleprojectteam2.Entity;
 
 import javax.persistence.*;
 import java.util.Date;
