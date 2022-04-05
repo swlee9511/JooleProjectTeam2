@@ -2,11 +2,13 @@ package com.javatraining.jooleprojectteam2.Entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int resource_id;
 
     // product_type_id FK
@@ -29,7 +31,7 @@ public class Product {
 
     // products are in set of products
     @OneToMany(mappedBy="product")
-    Set<Project_Product> productSet;
+    Set<Project_Product> productSet = new HashSet<>();
 
     // Constructors
     public Product() {
