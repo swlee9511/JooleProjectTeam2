@@ -6,6 +6,7 @@ import java.util.Date;
 @Entity
 public class Project_Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int project_productId; //PK
 
     @ManyToOne

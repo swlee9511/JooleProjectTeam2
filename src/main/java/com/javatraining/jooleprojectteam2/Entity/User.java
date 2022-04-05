@@ -2,6 +2,7 @@ package com.javatraining.jooleprojectteam2.Entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -22,7 +23,7 @@ public class User {
 
     // User can have many projects
     @OneToMany(mappedBy="user")
-    Set<Project> projectSets;
+    Set<Project> projectSets = new HashSet<>();
 
     // Constructors
     public User() {
