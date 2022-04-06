@@ -61,7 +61,7 @@ public class AllInOneTest {
         project_product.setProduct(product);
 
         User resUser = userRepository.save(user);
-        Project resProJect = projectRepository.save(project);
+        Project resProject = projectRepository.save(project);
         Product resProduct = productRepository.save(product);
         ProjectProduct resPP = project_productRepository.save(project_product);
         Assertions.assertEquals(user.getUserName(), resPP.getProject().getUser().getUserName());

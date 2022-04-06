@@ -23,7 +23,7 @@ public class Project {
     private User user;
 
     // Projects have set of products
-    @OneToMany(mappedBy="project")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="project")
     Set<ProjectProduct> productSet = new HashSet<>();
 
     // Constructors
