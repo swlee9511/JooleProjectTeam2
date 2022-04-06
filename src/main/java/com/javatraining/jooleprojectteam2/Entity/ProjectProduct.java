@@ -4,41 +4,39 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Project_Product {
+public class ProjectProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int project_productId; //PK
+    private int projectProductId; //PK
 
     @ManyToOne
-    @JoinColumn(name="project_id", referencedColumnName="project_id")
+    @JoinColumn(name="project_id", referencedColumnName="projectId")
     Project project;  //FK
 
     @ManyToOne
-    @JoinColumn(name="resource_id", referencedColumnName="resource_id")
+    @JoinColumn(name="resource_id", referencedColumnName="resourceId")
     Product product;  //FK
 
-    @Column
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date timeCreated;
 
     // Constructors
-    public Project_Product() {
+    public ProjectProduct() {
     }
 
-    public Project_Product(int project_productId, Project project, Product product, Date timeCreated) {
-        this.project_productId = project_productId;
+    public ProjectProduct(Project project, Product product) {
         this.project = project;
         this.product = product;
-        this.timeCreated = timeCreated;
+        this.timeCreated = new Date();
     }
 
     // Getter and Setters
-    public int getProject_productId() {
-        return project_productId;
+    public int getProjectProductId() {
+        return projectProductId;
     }
 
-    public void setProject_productId(int project_productId) {
-        this.project_productId = project_productId;
+    public void setProjectProductId(int projectProductId) {
+        this.projectProductId = projectProductId;
     }
 
     public Project getProject() {

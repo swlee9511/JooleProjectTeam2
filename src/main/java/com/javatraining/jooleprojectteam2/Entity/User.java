@@ -6,18 +6,16 @@ import java.util.*;
 @Entity
 public class User {
     @Id
-    private String user_name;
+    private String userName;
 
     private String role;
     private String password;
 
-    @Column
     @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date time_created;
+    private java.util.Date timeCreated;
 
-    @Column
     @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date last_updated;
+    private java.util.Date lastUpdated;
 
     // User can have many projects
     @OneToMany(mappedBy="user")
@@ -27,21 +25,21 @@ public class User {
     public User() {
     }
 
-    public User(String user_name, String role, String password, Date time_created) {
-        this.user_name = user_name;
+    public User(String userName, String role, String password) {
+        this.userName = userName;
         this.role = role;
         this.password = password;
-        this.time_created = time_created;
-        this.last_updated = time_created;
+        this.timeCreated = new Date();
+        this.lastUpdated = new Date();
     }
 
     // Getter and Setters
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getRole() {
@@ -61,19 +59,19 @@ public class User {
     }
 
     public Date getTimeCreated() {
-        return time_created;
+        return timeCreated;
     }
 
     public void setTimeCreated(Date timeCreated) {
-        this.time_created = timeCreated;
+        this.timeCreated = timeCreated;
     }
 
     public Date getLastUpdated() {
-        return last_updated;
+        return lastUpdated;
     }
 
     public void setLastUpdated(Date lastUpdated) {
-        this.last_updated = lastUpdated;
+        this.lastUpdated = lastUpdated;
     }
 
     public Set <Project> getProjectSets() {
@@ -84,19 +82,14 @@ public class User {
         this.projectSets = projectSets;
     }
 
-
-    public Date getLast_updated() {
-        return last_updated;
-    }
-
     @Override
     public String toString() {
         return "User{" +
-                "user_name='" + user_name + '\'' +
+                "user_name='" + userName + '\'' +
                 ", role='" + role + '\'' +
                 ", password='" + password + '\'' +
-                ", time_created=" + time_created +
-                ", last_updated=" + last_updated +
+                ", time_created=" + timeCreated +
+                ", last_updated=" + lastUpdated +
                 '}';
     }
 }

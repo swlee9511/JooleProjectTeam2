@@ -26,7 +26,7 @@ class ProductRepositoryTest {
         product.setLastUpdated(new Date());
         product.setBrand("Dell");
         product.setCertification("20220405");
-        product.setModel_year(2022);
+        product.setModelYear(2022);
         Product res = productRepository.save(product);
         Assertions.assertNotEquals(null, res);
     }
@@ -37,9 +37,9 @@ class ProductRepositoryTest {
         product.setLastUpdated(new Date());
         product.setBrand("Dell");
         product.setCertification("20220405");
-        product.setModel_year(2022);
+        product.setModelYear(2022);
         Product tmp = productRepository.save(product);
-        Optional<Product> res = productRepository.findById(tmp.getResource_id());
+        Optional<Product> res = productRepository.findById(tmp.getResourceId());
         Assertions.assertNotEquals(null, res.get());
     }
 }
