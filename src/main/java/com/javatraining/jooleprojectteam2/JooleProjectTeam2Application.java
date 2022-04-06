@@ -1,9 +1,6 @@
 package com.javatraining.jooleprojectteam2;
 
-import com.javatraining.jooleprojectteam2.Entity.MechanicalDetail;
-import com.javatraining.jooleprojectteam2.Entity.Product;
-import com.javatraining.jooleprojectteam2.Entity.Project;
-import com.javatraining.jooleprojectteam2.Entity.User;
+import com.javatraining.jooleprojectteam2.Entity.*;
 import com.javatraining.jooleprojectteam2.Repository.ProductRepository;
 import com.javatraining.jooleprojectteam2.Repository.ProjectProductRepository;
 import com.javatraining.jooleprojectteam2.Repository.ProjectRepository;
@@ -60,7 +57,7 @@ public class JooleProjectTeam2Application {
 //
 //        }
 
-    //section for testing Product repository
+//    section for testing Product repository
 //    @Bean
 //    public CommandLineRunner run(ProductRepository repository) {
 //        return (args -> {
@@ -73,18 +70,18 @@ public class JooleProjectTeam2Application {
 //            //this prints all
 //            System.out.println(repository.findAll());
 //
-////            prints product with brand ending with 'a'
-//           System.out.println(repository.findByBrandEndingWith("a"));
-//
-////            prints product with certifications that contain 'p'
-//            System.out.println(repository.findByCertificationContaining ("p"));
-//
-////            prints products with modelYear greater than 2000
-//            System.out.println(repository.findByModelYearGreaterThan(2000));
+//////            prints product with brand ending with 'a'
+////           System.out.println(repository.findByBrandEndingWith("a"));
+////
+//////            prints product with certifications that contain 'p'
+////            System.out.println(repository.findByCertificationContaining ("p"));
+////
+//////            prints products with modelYear greater than 2000
+////            System.out.println(repository.findByModelYearGreaterThan(2000));
 //        });
 //    }
-
-//        test product table entries
+//
+////        test product table entries
 //        private void insertProduct (ProductRepository repository) {
 //            repository.save(new Product(MechanicalDetail.MECHANICAL, 2000, "Honda", "Safe"));
 //            repository.save(new Product(MechanicalDetail.MECHANICAL, 1998, "Buick", "Cheap"));
@@ -124,23 +121,27 @@ public class JooleProjectTeam2Application {
 //    @Bean
 //    public CommandLineRunner run(ProjectProductRepository repository) {
 //        return (args -> {
-////            //this sends to the database
+//            //this sends to the database
 //            insertProjectProduct(repository);
-//
-//            //this returns an entity count
-////            System.out.println(repository.count());
-//
-//            //this prints all
+
+            //this returns an entity count
+//            System.out.println(repository.count());
+
+            //this prints all
 //            System.out.println(repository.findAll());
-//
-//            //prints projects that contain a User object that has userName "Norbert"
-////          System.out.println(repository.findByUser_UserName ("Norbert"));
+
+            //prints ProjectProduct that contain a Product that has Brand which contains "x"
+//          System.out.println(repository.findByProduct_BrandContains ("x"));
 //        });
 //    }
-//    //test project table entries
+    //test project table entries
 //    private void insertProjectProduct (ProjectProductRepository repository) {
-//            repository.save(new Project(new User("Roger", "Rabbit", "12345")), new Product(MechanicalDetail.MECHANICAL, 1998, "Batmobile", "Fast"));
-//          }
+//            repository.save(new ProjectProduct(new Project(new User("Roger", "Rabbit", "12345")), new Product(MechanicalDetail.MECHANICAL, 1998, "Batmobile", "Fast")));
+//        repository.save(new ProjectProduct(new Project(new User("James", "King", "12345")), new Product(MechanicalDetail.MECHANICAL, 1598, "Chariot", "Classy")));
+//        repository.save(new ProjectProduct(new Project(new User("Mars", "Deity", "12345")), new Product(MechanicalDetail.MECHANICAL, 2000, "Horse", "Smelly")));
+//        repository.save(new ProjectProduct(new Project(new User("Luke", "Skywalker", "12345")), new Product(MechanicalDetail.MECHANICAL, 3000, "x-wing", "Maneuverable")));
+//
+//    }
 
 }
 

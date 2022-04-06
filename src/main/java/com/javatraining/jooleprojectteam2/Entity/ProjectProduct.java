@@ -9,11 +9,11 @@ public class ProjectProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int projectProductId; //PK
 
-    @ManyToOne
+    @ManyToOne (cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name="project_id", referencedColumnName="projectId")
     Project project;  //FK
 
-    @ManyToOne
+    @ManyToOne (cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name="resource_id", referencedColumnName="resourceId")
     Product product;  //FK
 
@@ -28,6 +28,16 @@ public class ProjectProduct {
         this.project = project;
         this.product = product;
         this.timeCreated = new Date();
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectProduct{" +
+                "projectProductId=" + projectProductId +
+                ", project=" + project +
+                ", product=" + product +
+                ", timeCreated=" + timeCreated +
+                '}';
     }
 
     // Getter and Setters
