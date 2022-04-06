@@ -23,7 +23,8 @@ public class Project {
     private User user;
 
     // Projects have set of products
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="project")
+    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE},
+               mappedBy="project")
     Set<ProjectProduct> productSet = new HashSet<>();
 
     // Constructors

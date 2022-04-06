@@ -18,7 +18,7 @@ public class User {
     private java.util.Date lastUpdated;
 
     // User can have many projects
-    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE},
                mappedBy="user")
     Set<Project> projectSets = new HashSet<>();
 

@@ -9,7 +9,7 @@ public class ProductType {
     private int productTypeId;
 
     @OneToOne(mappedBy="productType",
-              cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+              cascade={CascadeType.PERSIST, CascadeType.MERGE},
               fetch = FetchType.LAZY)
     private Product product;
 
