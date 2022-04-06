@@ -34,7 +34,8 @@ public class Product {
     private java.util.Date lastUpdated;
 
     // products are in set of products
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="product")
+    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE},
+               mappedBy="product")
     Set<ProjectProduct> productSet = new HashSet<>();
 
     // Constructors
