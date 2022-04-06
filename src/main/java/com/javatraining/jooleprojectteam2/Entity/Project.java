@@ -9,59 +9,56 @@ import java.util.Set;
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int project_id;
+    private int projectId;
 
-    @Column
     @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date time_created;
+    private java.util.Date timeCreated;
 
-    @Column
     @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date last_updated;
+    private java.util.Date lastUpdated;
 
     // Projects have one User
     @ManyToOne
-    @JoinColumn(name="owner", referencedColumnName="user_name")
+    @JoinColumn(name="owner", referencedColumnName="userName")
     private User user;
 
     // Projects have set of products
     @OneToMany(mappedBy="project")
-    Set<Project_Product> productSet = new HashSet<>();
+    Set<ProjectProduct> productSet = new HashSet<>();
 
     // Constructors
     public Project() {
     }
 
-    public Project(int project_id, Date time_created, User user) {
-        this.project_id = project_id;
-        this.time_created = time_created;
-        this.last_updated = time_created;
+    public Project(User user) {
+        this.timeCreated = new Date();
+        this.lastUpdated = new Date();
         this.user = user;
     }
 
     // Getter and Setters
-    public int getProject_id() {
-        return project_id;
+    public int getProjectId() {
+        return projectId;
     }
 
-    public void setProject_id(int project_id) {
-        this.project_id = project_id;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 
     public Date getTimeCreated() {
-        return time_created;
+        return timeCreated;
     }
 
     public void setTimeCreated(Date timeCreated) {
-        this.time_created = timeCreated;
+        this.timeCreated = timeCreated;
     }
 
     public Date getLastUpdated() {
-        return last_updated;
+        return lastUpdated;
     }
 
     public void setLastUpdated(Date lastUpdated) {
-        this.last_updated = lastUpdated;
+        this.lastUpdated = lastUpdated;
     }
 
     public User getUser() {
@@ -72,20 +69,20 @@ public class Project {
         this.user = user;
     }
 
-    public Set<Project_Product> getProductSet() {
+    public Set<ProjectProduct> getProductSet() {
         return productSet;
     }
 
-    public void setProductSet(Set<Project_Product> productSet) {
+    public void setProductSet(Set<ProjectProduct> productSet) {
         this.productSet = productSet;
     }
 
     @Override
     public String toString() {
         return "Project{" +
-                "project_id=" + project_id +
-                ", time_created=" + time_created +
-                ", last_updated=" + last_updated +
+                "project_id=" + projectId +
+                ", time_created=" + timeCreated +
+                ", last_updated=" + lastUpdated +
                 ", user=" + user +
                 '}';
     }

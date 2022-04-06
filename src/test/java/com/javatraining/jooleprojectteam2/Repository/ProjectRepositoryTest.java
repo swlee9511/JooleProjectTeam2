@@ -33,7 +33,7 @@ class ProjectRepositoryTest {
         project.setLastUpdated(new Date());
         project.setTimeCreated(new Date());
         Project tmp = projectRepository.save(project);
-        Optional<Project> res = projectRepository.findById(tmp.getProject_id());
+        Optional<Project> res = projectRepository.findById(tmp.getProjectId());
         Assertions.assertNotEquals(null,res);
     }
 }

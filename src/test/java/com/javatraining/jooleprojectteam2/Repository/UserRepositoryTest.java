@@ -22,16 +22,16 @@ class UserRepositoryTest {
 
     @Test
     public void saveTest() {
-        User user = new User("AAA","owner","123456", new Date());
+        User user = new User("AAA","owner","123456");
         User res = userRepository.save(user);
         Assertions.assertNotEquals(null, res);
     }
     @Test
     public void findIdTest() {
-        User user = new User("AAA","owner","123456", new Date());
+        User user = new User("AAA","owner","123456");
         User tmp = userRepository.save(user);
 
-        Optional<User> res = userRepository.findById(tmp.getUser_name());
+        Optional<User> res = userRepository.findById(tmp.getUserName());
         Assertions.assertNotEquals(null, res.get());
     }
 

@@ -9,57 +9,55 @@ import java.util.Set;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int resource_id;
+    private int resourceId;
     // product_type_id FK
 
     // technical_detail_id FK
 
-    // mechanical_detail_id FK
+    // mechanical_detail_id
+    // use ENUM
 
-    private int model_year;
+    private int modelYear;
     private String brand;
     private String certification;
 
-    @Column
     @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date time_created;
+    private java.util.Date timeCreated;
 
-    @Column
     @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date last_updated;
+    private java.util.Date lastUpdated;
 
     // products are in set of products
     @OneToMany(mappedBy="product")
-    Set<Project_Product> productSet = new HashSet<>();
+    Set<ProjectProduct> productSet = new HashSet<>();
 
     // Constructors
     public Product() {
     }
 
-    public Product(int resource_id, int model_year, String brand, String certification, Date time_created) {
-        this.resource_id = resource_id;
-        this.model_year = model_year;
+    public Product(int modelYear, String brand, String certification) {
+        this.modelYear = modelYear;
         this.brand = brand;
         this.certification = certification;
-        this.time_created = time_created;
-        this.last_updated = time_created;
+        this.timeCreated = new Date();
+        this.lastUpdated = new Date();
     }
 
     // Getter & Setters
-    public int getResource_id() {
-        return resource_id;
+    public int getResourceId() {
+        return resourceId;
     }
 
-    public void setResource_id(int product_id) {
-        this.resource_id = product_id;
+    public void setResourceId(int resourceId) {
+        this.resourceId = resourceId;
     }
 
-    public int getModel_year() {
-        return model_year;
+    public int getModelYear() {
+        return modelYear;
     }
 
-    public void setModel_year(int model_year) {
-        this.model_year = model_year;
+    public void setModelYear(int modelYear) {
+        this.modelYear = modelYear;
     }
 
     public String getBrand() {
@@ -79,38 +77,38 @@ public class Product {
     }
 
     public Date getTimeCreated() {
-        return time_created;
+        return timeCreated;
     }
 
     public void setTimeCreated(Date timeCreated) {
-        this.time_created = timeCreated;
+        this.timeCreated = timeCreated;
     }
 
     public Date getLastUpdated() {
-        return last_updated;
+        return lastUpdated;
     }
 
     public void setLastUpdated(Date lastUpdated) {
-        this.last_updated = lastUpdated;
+        this.lastUpdated = lastUpdated;
     }
 
-    public Set<Project_Product> getProductSet() {
+    public Set<ProjectProduct> getProductSet() {
         return productSet;
     }
 
-    public void setProductSet(Set<Project_Product> productSet) {
+    public void setProductSet(Set<ProjectProduct> productSet) {
         this.productSet = productSet;
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "resource_id=" + resource_id +
-                ", model_year=" + model_year +
+                "resource_id=" + resourceId +
+                ", model_year=" + modelYear +
                 ", brand='" + brand + '\'' +
                 ", certification='" + certification + '\'' +
-                ", time_created=" + time_created +
-                ", last_updated=" + last_updated +
+                ", time_created=" + timeCreated +
+                ", last_updated=" + lastUpdated +
                 '}';
     }
 }
