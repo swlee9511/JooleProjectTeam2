@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findByBrandEndingWith (String str);
     List<Product> findByCertificationContaining (String str);
+    List<Product> findByModelYearGreaterThan (int year);
 
 
 }
