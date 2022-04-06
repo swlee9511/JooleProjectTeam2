@@ -10,7 +10,6 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int resource_id;
-
     // product_type_id FK
 
     // technical_detail_id FK
@@ -101,5 +100,17 @@ public class Product {
 
     public void setProductSet(Set<Project_Product> productSet) {
         this.productSet = productSet;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "resource_id=" + resource_id +
+                ", model_year=" + model_year +
+                ", brand='" + brand + '\'' +
+                ", certification='" + certification + '\'' +
+                ", time_created=" + time_created +
+                ", last_updated=" + last_updated +
+                '}';
     }
 }

@@ -1,9 +1,7 @@
 package com.javatraining.jooleprojectteam2.Entity;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class User {
@@ -78,11 +76,27 @@ public class User {
         this.last_updated = lastUpdated;
     }
 
-    public Set<Project> getProjectSets() {
+    public Set <Project> getProjectSets() {
         return projectSets;
     }
 
     public void setProjectSets(Set<Project> projectSets) {
         this.projectSets = projectSets;
+    }
+
+
+    public Date getLast_updated() {
+        return last_updated;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_name='" + user_name + '\'' +
+                ", role='" + role + '\'' +
+                ", password='" + password + '\'' +
+                ", time_created=" + time_created +
+                ", last_updated=" + last_updated +
+                '}';
     }
 }

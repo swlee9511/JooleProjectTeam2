@@ -79,4 +79,14 @@ public class Project {
     public void setProductSet(Set<Project_Product> productSet) {
         this.productSet = productSet;
     }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "project_id=" + project_id +
+                ", time_created=" + time_created +
+                ", last_updated=" + last_updated +
+                ", user=" + user +
+                '}';
+    }
 }
