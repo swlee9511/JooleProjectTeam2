@@ -9,7 +9,7 @@ public class TechnicalDetail {
     private int technicalDetailId;
 
     @OneToOne(mappedBy="technicalDetail",
-            cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+            cascade={CascadeType.PERSIST, CascadeType.MERGE},
             fetch = FetchType.LAZY)
     private Product product;
 
