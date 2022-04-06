@@ -7,11 +7,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface UserRepository extends JpaRepository<User, String> {
     //finds roles starting with string
     List <User> findByRoleStartingWith (String str);
-//    List <User> findByusernameStartingWith (String str);
+    //finds userNAme starting with string
+    List <User> findByUserNameStartingWith (String str);
+    //fins userName that contains string, case is ignored
+    List <User> findByUserNameContainsIgnoreCase (String str);
+
 
 
 }
