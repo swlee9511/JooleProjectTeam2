@@ -1,11 +1,14 @@
 package com.javatraining.jooleprojectteam2.Service;
 
-import com.javatraining.jooleprojectteam2.Repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.javatraining.jooleprojectteam2.Entity.Project;
+import com.javatraining.jooleprojectteam2.Entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-@Service
-public class UserService {
-    @Autowired
-    private UserRepository userRepository;
+
+public interface UserService {
+    User create(User user);
+    User find(String username);
+    User update(User user);
+    User delete(User user);
 }

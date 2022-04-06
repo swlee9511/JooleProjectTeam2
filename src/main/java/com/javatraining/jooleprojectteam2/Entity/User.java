@@ -92,4 +92,5 @@ public class User {
                 ", last_updated=" + lastUpdated +
                 '}';
     }
+
 }
