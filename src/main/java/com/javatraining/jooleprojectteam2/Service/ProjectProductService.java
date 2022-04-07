@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public interface ProjectProductService {
     ProjectProduct create (ProjectProduct projectproduct);
-    ProjectProduct find (String projectProductId);
-    ProjectProduct update (String projectProductId, ProjectProduct projectproduct);
-    ProjectProduct delete (ProjectProduct projectproduct);
+    ProjectProduct find (int projectProductId);
+    ProjectProduct update (int projectProductId, ProjectProduct projectproduct);
+    void delete (ProjectProduct projectproduct);
 
 }
