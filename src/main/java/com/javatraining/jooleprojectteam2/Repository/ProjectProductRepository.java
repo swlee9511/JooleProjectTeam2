@@ -12,11 +12,11 @@ import java.util.Optional;
 public interface ProjectProductRepository extends JpaRepository<ProjectProduct, Integer> {
 
     //find ProjectProduct with Product with field Brand which contains str
-    List<ProjectProduct> findByProduct_BrandContains(String str);
-
-    boolean existsByProjectAndProduct(Project project, Product product);
-
-    Optional<ProjectProduct> findByProjectProductId(int id);
-
-    Optional<ProjectProduct> findByProjectProduct(ProjectProduct projectproduct);
+//    List<ProjectProduct> findByProduct_BrandContains(String str);
+//
+//    boolean existsByProjectAndProduct(Project project, Product product);
+//
+//    Optional<ProjectProduct> findByProjectProductId(int id);
+//
+//    Optional<ProjectProduct> findByProjectProduct(ProjectProduct projectproduct);
 }

@@ -25,16 +25,19 @@ public class ProjectProductServiceImpl implements ProjectProductService {
 
     @Override
     public ProjectProduct create(ProjectProduct projectproduct) throws ProjectProductAlreadyExistException {
-        if (projectProductRepository.existsByProjectAndProduct(projectproduct.getProject(), projectproduct.getProduct())) {
+//        if (projectProductRepository.existsByProjectAndProduct(projectproduct.getProject(), projectproduct.getProduct())) {
+//            throw new ProjectProductAlreadyExistException("ProjectProduct already exists");
+//        }
+        if (projectProductRepository.existsById(projectproduct.getProjectProductId())) {
             throw new ProjectProductAlreadyExistException("ProjectProduct already exists");
         }
-        projectProductRepository.save(projectproduct);
-        return projectproduct;
+        ProjectProduct res = projectProductRepository.save(projectproduct);
+        return res;
     }
 
     @Override
     public ProjectProduct find(int id) throws ProjectProductDoesntExistException {
-        Optional<ProjectProduct> tmp = projectProductRepository.findByProjectProductId(id);
+        Optional<ProjectProduct> tmp = projectProductRepository.findById(id);
         if (!tmp.isPresent()) {
             throw new ProjectProductDoesntExistException("ProjectProduct doesn't exist");
         }
@@ -43,7 +46,7 @@ public class ProjectProductServiceImpl implements ProjectProductService {
 
     @Override
     public ProjectProduct update(int id, ProjectProduct projectproduct) throws ProjectProductDoesntExistException {
-        Optional<ProjectProduct> tmp = projectProductRepository.findByProjectProductId(id);
+        Optional<ProjectProduct> tmp = projectProductRepository.findById(id);
         if (!tmp.isPresent()) {
             throw new ProjectProductDoesntExistException("ProjectProduct doesn't exist");
         }
