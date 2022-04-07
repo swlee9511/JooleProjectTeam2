@@ -13,7 +13,7 @@ public interface UserService {
     User create(User user);
     User find(String username);
     User updateProfile(User user);
-    void delete(User user);
+    void delete(String userName);
 
     Set<Project> findAllProjectInUser(String username);
 }

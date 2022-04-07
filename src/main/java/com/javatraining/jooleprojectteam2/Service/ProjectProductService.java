@@ -11,5 +11,4 @@ public interface ProjectProductService {
     ProjectProduct find (String projectProductId);
     ProjectProduct update (String projectProductId, ProjectProduct projectproduct);
     ProjectProduct delete (ProjectProduct projectproduct);
-
 }

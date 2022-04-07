@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/Joole?characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
     username: root
-    password: Dltkdghk1213317!
+    password: 1234567890
   jpa:
     hibernate:
       ddl-auto:  update
