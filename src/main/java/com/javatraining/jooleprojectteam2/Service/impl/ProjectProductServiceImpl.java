@@ -1,7 +1,7 @@
 package com.javatraining.jooleprojectteam2.Service.impl;
 
 import com.javatraining.jooleprojectteam2.Entity.ProjectProduct;
-import com.javatraining.jooleprojectteam2.Entity.Exception.ProjectProductDoesntExistException;
+import com.javatraining.jooleprojectteam2.Exception.ProjectProductDoesntExistException;
 import com.javatraining.jooleprojectteam2.Repository.ProjectProductRepository;
 import com.javatraining.jooleprojectteam2.Service.ProjectProductService;
 import org.springframework.beans.factory.annotation.Autowired;

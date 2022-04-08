@@ -9,11 +9,11 @@ public class ProjectProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int projectProductId; //PK
 
-    @ManyToOne (cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn(name="project_id", referencedColumnName="projectId")
     Project project;  //FK
 
-    @ManyToOne (cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn(name="resource_id", referencedColumnName="resourceId")
     Product product;  //FK
 

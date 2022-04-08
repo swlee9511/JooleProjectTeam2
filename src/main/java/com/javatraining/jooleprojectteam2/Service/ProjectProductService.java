@@ -1,6 +1,6 @@
 package com.javatraining.jooleprojectteam2.Service;
 
-import com.javatraining.jooleprojectteam2.Entity.Exception.ProjectProductDoesntExistException;
+import com.javatraining.jooleprojectteam2.Exception.ProjectProductDoesntExistException;
 import com.javatraining.jooleprojectteam2.Entity.Product;
 import com.javatraining.jooleprojectteam2.Entity.ProjectProduct;
 import com.javatraining.jooleprojectteam2.Repository.ProjectProductRepository;

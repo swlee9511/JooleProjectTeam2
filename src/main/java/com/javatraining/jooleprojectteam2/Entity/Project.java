@@ -18,7 +18,7 @@ public class Project {
     private java.util.Date lastUpdated;
 
     // Projects have one User
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn(name="owner", referencedColumnName="userName")
     private User user;
 
