@@ -20,6 +20,7 @@ class UserServiceImplTest {
     UserRepository userRepository;
     @Test
     void create() {
+        userRepository.deleteById("ForService");
         User user = new User("ForService","owner","123456");
         userServiceImpl.create(user);
         Assertions.assertEquals(user.getUserName(), userRepository.findById("ForService").get().getUserName());
@@ -27,6 +28,8 @@ class UserServiceImplTest {
 
     @Test
     void find() {
+        User user = new User("ForService","owner","123456");
+        userServiceImpl.create(user);
         Assertions.assertEquals(userServiceImpl.find("ForService").getUserName(), "ForService");
     }
 
