@@ -1,8 +1,6 @@
 package com.javatraining.jooleprojectteam2.Service.impl;
 
-import com.javatraining.jooleprojectteam2.Entity.Product;
-import com.javatraining.jooleprojectteam2.Entity.Project;
-import com.javatraining.jooleprojectteam2.Entity.ProjectProduct;
+import com.javatraining.jooleprojectteam2.Entity.*;
 import com.javatraining.jooleprojectteam2.Repository.ProjectProductRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,20 +24,24 @@ class ProjectProductServiceImplTest {
 
     private ProjectProduct projectProduct;
     @BeforeEach
-    public void setup() {
-        this.projectProduct= new ProjectProduct();
-        projectProduct.setTimeCreated(new Date());
-//        Product product = new Product();
-//        product.setBrand("dell");
-//        Project project = new Project();
-//        project.setTimeCreated(new Date());
-//        project.setTimeCreated(new Date());
-//        pp.setProduct(product);
-//        pp.setProject(project);
+
+        public void setup() {
+            this.projectProduct = new ProjectProduct();
+
+    //        this.projectProduct= new ProjectProduct();
+//        projectProduct.setTimeCreated(new Date());
+////        Product product = new Product();
+////        product.setBrand("dell");
+////        Project project = new Project();
+////        project.setTimeCreated(new Date());
+////        project.setTimeCreated(new Date());
+////        pp.setProduct(product);
+////        pp.setProject(project);
     }
     @Test
     void create() {
         ProjectProduct pp1 = projectProductServiceImpl.create(projectProduct);
+
         Assertions.assertNotNull(projectProductRepository.findById(pp1.getProjectProductId()).get());
     }
 
