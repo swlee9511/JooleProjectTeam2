@@ -1,21 +1,13 @@
 package com.javatraining.jooleprojectteam2.Service.impl;
 
-import com.javatraining.jooleprojectteam2.Entity.Project;
 import com.javatraining.jooleprojectteam2.Entity.ProjectProduct;
-import com.javatraining.jooleprojectteam2.Entity.User;
-import com.javatraining.jooleprojectteam2.Exception.ProjectProductAlreadyExistException;
-import com.javatraining.jooleprojectteam2.Exception.ProjectProductDoesntExistException;
-import com.javatraining.jooleprojectteam2.Exception.UserAlreadyExistException;
-import com.javatraining.jooleprojectteam2.Exception.UserDoesntExistException;
+import com.javatraining.jooleprojectteam2.Entity.Exception.ProjectProductDoesntExistException;
 import com.javatraining.jooleprojectteam2.Repository.ProjectProductRepository;
-import com.javatraining.jooleprojectteam2.Repository.UserRepository;
 import com.javatraining.jooleprojectteam2.Service.ProjectProductService;
-import com.javatraining.jooleprojectteam2.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class ProjectProductServiceImpl implements ProjectProductService {
@@ -24,16 +16,11 @@ public class ProjectProductServiceImpl implements ProjectProductService {
     private ProjectProductRepository projectProductRepository;
 
     @Override
-    public ProjectProduct create(ProjectProduct projectproduct) throws ProjectProductAlreadyExistException {
-//        if (projectProductRepository.existsByProjectAndProduct(projectproduct.getProject(), projectproduct.getProduct())) {
-//            throw new ProjectProductAlreadyExistException("ProjectProduct already exists");
-//        }
-        if (projectProductRepository.existsById(projectproduct.getProjectProductId())) {
-            throw new ProjectProductAlreadyExistException("ProjectProduct already exists");
-        }
+    public ProjectProduct create(ProjectProduct projectproduct) {
         ProjectProduct res = projectProductRepository.save(projectproduct);
         return res;
     }
+
 
     @Override
     public ProjectProduct find(int id) throws ProjectProductDoesntExistException {
@@ -59,4 +46,4 @@ public class ProjectProductServiceImpl implements ProjectProductService {
         projectProductRepository.delete(projectproduct);
     }
 
-}
+    }
