@@ -46,7 +46,7 @@ class ProductServiceImplTest {
     void update() {
         Product p = productServiceImpl.create(product);
         String tmp = p.getBrand();
-        product.setBrand("HP");
+        p.setBrand("HP");
         Product p2 = productServiceImpl.update(product);
         System.out.println(p.getBrand());
         Assertions.assertNotEquals(tmp, p2.getBrand());//why p.getBrand == p2.getBrand in this case?
