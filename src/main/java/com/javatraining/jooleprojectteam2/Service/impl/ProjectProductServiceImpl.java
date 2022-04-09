@@ -1,5 +1,7 @@
 package com.javatraining.jooleprojectteam2.Service.impl;
 
+import com.javatraining.jooleprojectteam2.Entity.Project;
+import com.javatraining.jooleprojectteam2.Entity.Product;
 import com.javatraining.jooleprojectteam2.Entity.ProjectProduct;
 import com.javatraining.jooleprojectteam2.Exception.ProjectProductDoesntExistException;
 import com.javatraining.jooleprojectteam2.Repository.ProjectProductRepository;
@@ -7,7 +9,9 @@ import com.javatraining.jooleprojectteam2.Service.ProjectProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ProjectProductServiceImpl implements ProjectProductService {
@@ -20,7 +24,6 @@ public class ProjectProductServiceImpl implements ProjectProductService {
         ProjectProduct res = projectProductRepository.save(projectproduct);
         return res;
     }
-
 
     @Override
     public ProjectProduct find(int id) throws ProjectProductDoesntExistException {
@@ -45,5 +48,4 @@ public class ProjectProductServiceImpl implements ProjectProductService {
 
         projectProductRepository.delete(projectproduct);
     }
-
-    }
+}
