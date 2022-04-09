@@ -1,5 +1,7 @@
 package com.javatraining.jooleprojectteam2.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -18,7 +20,8 @@ public class Project {
     private java.util.Date lastUpdated;
 
     // Projects have one User
-    @ManyToOne (cascade = CascadeType.MERGE)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name="owner", referencedColumnName="userName")
     private User user;
 
@@ -30,7 +33,6 @@ public class Project {
     // Constructors
     public Project() {
     }
-
     public Project(User user) {
         this.timeCreated = new Date();
         this.lastUpdated = new Date();
