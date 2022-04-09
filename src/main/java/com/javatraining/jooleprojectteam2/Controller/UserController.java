@@ -33,11 +33,13 @@ public class UserController {
         }
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
+
     @PutMapping("/update")
     public ResponseEntity<?> updateUser(@RequestBody User user) {
         userService.updateProfile(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteUser(@RequestParam(name = "userName") String userName) {
         userService.delete(userName);
