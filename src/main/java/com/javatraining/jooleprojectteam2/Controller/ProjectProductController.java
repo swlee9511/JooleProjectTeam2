@@ -55,7 +55,7 @@ public class ProjectProductController {
 
     // PostmanURL: localhost:8080/projectProduct/updateProjectProduct/?projectProductId=X&projectId=X&resourceId=X
     @PutMapping("/updateProjectProduct")
-    public ResponseEntity<?> updateProduct(@RequestParam(name="projectProductId") int projectProductId,
+    public ResponseEntity<?> updateProjectProduct(@RequestParam(name="projectProductId") int projectProductId,
                                            @RequestParam(name="projectId") int projectId,
                                            @RequestParam(name="resourceId") int resourceId) {
         Project projectTemp;
