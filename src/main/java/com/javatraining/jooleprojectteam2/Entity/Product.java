@@ -1,5 +1,7 @@
 package com.javatraining.jooleprojectteam2.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -34,6 +36,7 @@ public class Product {
     private java.util.Date lastUpdated;
 
     // products are in set of products
+    @JsonIgnore
     @OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE},
                mappedBy="product")
     Set<ProjectProduct> productSet = new HashSet<>();
