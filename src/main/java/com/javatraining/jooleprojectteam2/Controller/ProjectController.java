@@ -54,7 +54,7 @@ public class ProjectController {
                 return new ResponseEntity<>(temp, HttpStatus.CREATED);
         }
         // PostmanURL: localhost:8080/project/deleteProject?projectId=X
-        @DeleteMapping("/deleteProduct")
+        @DeleteMapping("/deleteProject")
         public ResponseEntity<?> deleteProject(@RequestParam(name="projectId") int projectId) {
                 projectService.delete(projectId);
                 return new ResponseEntity<>(HttpStatus.OK);
