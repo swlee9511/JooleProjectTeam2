@@ -11,6 +11,4 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findByBrandEndingWith (String str);
     List<Product> findByCertificationContaining (String str);
     List<Product> findByModelYearGreaterThan (int year);
-
-
 }
