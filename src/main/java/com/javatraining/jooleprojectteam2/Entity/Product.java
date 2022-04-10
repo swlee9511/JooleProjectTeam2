@@ -37,7 +37,7 @@ public class Product {
 
     // products are in set of products
     @JsonIgnore
-    @OneToMany(cascade={CascadeType.ALL},
+    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE},
                mappedBy="product")
     Set<ProjectProduct> productSet = new HashSet<>();
 
