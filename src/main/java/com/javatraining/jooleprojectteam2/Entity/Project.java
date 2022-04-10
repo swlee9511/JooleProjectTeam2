@@ -21,12 +21,12 @@ public class Project {
 
     // Projects have one User
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne (cascade={CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="owner", referencedColumnName="userName")
     private User user;
 
     // Projects have set of products
-    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE},
+    @OneToMany(cascade={CascadeType.ALL},
                mappedBy="project")
     Set<ProjectProduct> productSet = new HashSet<>();
 
