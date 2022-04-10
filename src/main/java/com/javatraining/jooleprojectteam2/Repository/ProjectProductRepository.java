@@ -13,6 +13,8 @@ import java.util.Set;
 
 public interface ProjectProductRepository extends JpaRepository<ProjectProduct, Integer> {
 
-//    //find ProjectProduct with Product with field Brand which contains str
+    //find ProjectProduct with Product with field Brand which contains str
     List<ProjectProduct> findByProduct_BrandContains(String str);
+    List<ProjectProduct> findByProject_ProjectId(int projectId);
+    List<ProjectProduct> findByProduct_ResourceId(int resourceId);
 }

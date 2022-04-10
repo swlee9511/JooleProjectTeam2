@@ -1,17 +1,17 @@
 package com.javatraining.jooleprojectteam2.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.fasterxml.jackson.annotation.JsonFilter;
 import javax.persistence.*;
 import java.util.Date;
 
+@JsonFilter("ProjectProductFilter")
 @Entity
 public class ProjectProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int projectProductId; //PK
 
-    @JsonIgnore
     @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn(name="project_id", referencedColumnName="projectId")
     Project project;  //FK

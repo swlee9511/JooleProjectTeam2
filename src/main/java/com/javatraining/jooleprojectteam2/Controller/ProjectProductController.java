@@ -11,6 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.http.converter.json.MappingJacksonValue;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -45,12 +52,17 @@ public class ProjectProductController {
     @GetMapping("/find")
     public ResponseEntity<?> findProjectProduct(@RequestParam(name="projectProductId") int projectProductId) {
         ProjectProduct temp;
+        MappingJacksonValue tempMap;
         try {
             temp = projectProductService.find(projectProductId);
+            SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.serializeAll();
+            FilterProvider filters = new SimpleFilterProvider().addFilter("ProjectProductFilter", filter);
+            tempMap = new MappingJacksonValue(temp);
+            tempMap.setFilters(filters);
         } catch(Exception e) {
             return new ResponseEntity<>("{\"error\":\""+e.getMessage() + "\"}", HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(temp, HttpStatus.CREATED);
+        return new ResponseEntity<>(tempMap, HttpStatus.CREATED);
     }
 
     // PostmanURL: localhost:8080/projectProduct/updateProjectProduct/?projectProductId=X&projectId=X&resourceId=X
@@ -61,6 +73,7 @@ public class ProjectProductController {
         Project projectTemp;
         Product productTemp;
         ProjectProduct temp;
+        MappingJacksonValue tempMap;
         try {
             projectTemp = projectService.findOne(projectId);
             productTemp = productService.find(resourceId);
@@ -68,10 +81,16 @@ public class ProjectProductController {
             temp.setProject(projectTemp);
             temp.setProduct(productTemp);
             projectProductService.update(projectProductId, temp);
+
+            SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.serializeAll();
+            FilterProvider filters = new SimpleFilterProvider().addFilter("ProjectProductFilter", filter);
+            tempMap = new MappingJacksonValue(temp);
+            tempMap.setFilters(filters);
+
         } catch(Exception e) {
             return new ResponseEntity<>("{\"error\":\""+e.getMessage() + "\"}", HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(temp, HttpStatus.CREATED);
+        return new ResponseEntity<>(tempMap, HttpStatus.CREATED);
     }
 
     // PostmanURL: localhost:8080/projectProduct/deleteProjectProduct?projectProductId=X
@@ -87,17 +106,37 @@ public class ProjectProductController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // tried to create a function that will get all the products/projects that is linked to specific project/product
-    /*@GetMapping("/findAllProductsInProject/{projectId}")
-    public ResponseEntity<?> findAllProductsInProject(@PathVariable int projectId) {
-        Project projectTemp;
+    // PostmanURL: localhost:8080/projectProduct/findAllProductsInProjectId/X
+    @GetMapping("/findAllProductsInProjectId/{projectId}")
+    public ResponseEntity<?> findAllProductsInProjectId(@PathVariable int projectId) {
         List<ProjectProduct> temp;
+        MappingJacksonValue tempMap;
         try {
-            projectTemp = projectService.findOne(projectId);
-            temp = projectProductService.findAllProductsInProject(projectTemp);
+            temp = projectProductService.findAllProducts(projectId);
+            SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("projectProductId","product");
+            FilterProvider filters = new SimpleFilterProvider().addFilter("ProjectProductFilter", filter);
+            tempMap = new MappingJacksonValue(temp);
+            tempMap.setFilters(filters);
         } catch(Exception e) {
             return new ResponseEntity<>("{\"error\":\""+e.getMessage() + "\"}", HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(temp, HttpStatus.CREATED);
-    }*/
+        return new ResponseEntity<>(tempMap, HttpStatus.CREATED);
+    }
+
+    // PostmanURL: localhost:8080/projectProduct/findAllProjectsWithResourceId/X
+    @GetMapping("/findAllProjectsWithResourceId/{resourceId}")
+    public ResponseEntity<?> findAllProjectsWithResourceId(@PathVariable int resourceId) {
+        List<ProjectProduct> temp;
+        MappingJacksonValue tempMap;
+        try {
+            temp = projectProductService.findAllProjects(resourceId);
+            SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("projectProductId","project");
+            FilterProvider filters = new SimpleFilterProvider().addFilter("ProjectProductFilter", filter);
+            tempMap = new MappingJacksonValue(temp);
+            tempMap.setFilters(filters);
+        } catch (Exception e) {
+            return new ResponseEntity<>("{\"error\":\"" + e.getMessage() + "\"}", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(tempMap, HttpStatus.CREATED);
+    }
 }
