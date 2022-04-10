@@ -26,6 +26,7 @@ public class Project {
     private User user;
 
     // Projects have set of products
+    @JsonIgnore
     @OneToMany(cascade={CascadeType.ALL},
                mappedBy="project")
     Set<ProjectProduct> productSet = new HashSet<>();

@@ -21,14 +21,13 @@ public class ProjectProductServiceImpl implements ProjectProductService {
 
     @Override
     public ProjectProduct create(ProjectProduct projectproduct) {
-        ProjectProduct res = projectProductRepository.save(projectproduct);
-        return res;
+        return projectProductRepository.save(projectproduct);
     }
 
     @Override
     public ProjectProduct find(int id) throws ProjectProductDoesntExistException {
         Optional<ProjectProduct> tmp = projectProductRepository.findById(id);
-        if (!tmp.isPresent()) {
+        if (tmp.isEmpty()) {
             throw new ProjectProductDoesntExistException("ProjectProduct doesn't exist");
         }
         return tmp.get();
@@ -37,7 +36,7 @@ public class ProjectProductServiceImpl implements ProjectProductService {
     @Override
     public ProjectProduct update(int id, ProjectProduct projectproduct) throws ProjectProductDoesntExistException {
         Optional<ProjectProduct> tmp = projectProductRepository.findById(id);
-        if (!tmp.isPresent()) {
+        if (tmp.isEmpty()) {
             throw new ProjectProductDoesntExistException("ProjectProduct doesn't exist");
         }
         return projectProductRepository.save(projectproduct);
@@ -47,5 +46,15 @@ public class ProjectProductServiceImpl implements ProjectProductService {
     public void delete(ProjectProduct projectproduct) {
 
         projectProductRepository.delete(projectproduct);
+    }
+
+    @Override
+    public List<ProjectProduct> findAllProducts(int projectId) {
+        return projectProductRepository.findByProject_ProjectId(projectId);
+    }
+
+    @Override
+    public List<ProjectProduct> findAllProjects(int resourceId) {
+        return projectProductRepository.findByProduct_ResourceId(resourceId);
     }
 }
