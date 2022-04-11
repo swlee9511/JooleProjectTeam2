@@ -1,6 +1,9 @@
 package com.javatraining.jooleprojectteam2.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -8,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,9 +33,12 @@ public class Product {
     private String brand;
     private String certification;
 
+    @CreatedDate
+    @Column(updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date timeCreated;
 
+    @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date lastUpdated;
 
@@ -50,8 +57,8 @@ public class Product {
         this.modelYear = modelYear;
         this.brand = brand;
         this.certification = certification;
-        this.timeCreated = new Date();
-        this.lastUpdated = new Date();
+        //this.timeCreated = new Date();
+        //this.lastUpdated = new Date();
     }
 
     // Getter & Setters

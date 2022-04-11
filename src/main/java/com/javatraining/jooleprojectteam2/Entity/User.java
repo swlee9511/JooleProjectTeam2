@@ -1,9 +1,17 @@
 package com.javatraining.jooleprojectteam2.Entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
+@DynamicUpdate
 public class User {
     @Id
     private String userName;
@@ -11,9 +19,13 @@ public class User {
     private String role;
     private String password;
 
+    @CreatedDate
+    //@JsonProperty(access = JsonProperty.Access.READ_ONLY) //not work, the null is come from java default initialization instead of json
+    @Column(updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date timeCreated;
 
+    @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date lastUpdated;
 
@@ -30,8 +42,8 @@ public class User {
         this.userName = userName;
         this.role = role;
         this.password = password;
-        this.timeCreated = new Date();
-        this.lastUpdated = new Date();
+//        this.timeCreated = new Date();
+//        this.lastUpdated = new Date();
     }
 
     // Getter and Setters

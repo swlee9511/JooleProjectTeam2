@@ -46,7 +46,7 @@ public class ProjectController {
                         temp = projectService.findOne(projectId);
                         temp.setUser(project.getUser());
                         temp.setProductSet(project.getProductSet());
-                        temp.setLastUpdated(new Date());
+                        //temp.setLastUpdated(new Date());
                         projectService.update(temp);
                 } catch(Exception e) {
                         return new ResponseEntity<>("{\"error\":\""+e.getMessage() + "\"}", HttpStatus.BAD_REQUEST);

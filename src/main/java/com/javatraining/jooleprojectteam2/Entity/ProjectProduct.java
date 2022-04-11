@@ -2,6 +2,8 @@ package com.javatraining.jooleprojectteam2.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonFilter;
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -20,6 +22,8 @@ public class ProjectProduct {
     @JoinColumn(name="resource_id", referencedColumnName="resourceId")
     Product product;  //FK
 
+    @CreatedDate
+    @Column(updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date timeCreated;
 
@@ -30,7 +34,7 @@ public class ProjectProduct {
     public ProjectProduct(Project project, Product product) {
         this.project = project;
         this.product = product;
-        this.timeCreated = new Date();
+        //this.timeCreated = new Date();
     }
 
     @Override

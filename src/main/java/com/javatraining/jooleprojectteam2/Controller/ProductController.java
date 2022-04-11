@@ -50,7 +50,7 @@ public class ProductController {
             temp.setBrand(product.getBrand());
             temp.setCertification(product.getCertification());
             temp.setModelYear(product.getModelYear());
-            temp.setLastUpdated(new Date());
+            //temp.setLastUpdated(new Date());
             productService.update(temp);
         } catch(Exception e) {
             return new ResponseEntity<>("{\"error\":\""+e.getMessage() + "\"}", HttpStatus.BAD_REQUEST);
