@@ -33,5 +33,4 @@ build/
 .vscode/
 
 ### DB stuff ###
-application.yml
-application.properties
+src/main/resources/application.yml
