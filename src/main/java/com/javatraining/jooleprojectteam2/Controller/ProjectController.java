@@ -16,7 +16,7 @@ public class ProjectController {
         @Autowired
         ProjectService projectService;
 
-        // PostmanURL: localhost:8080/product/create
+        // PostmanURL: localhost:8080/project/create
         @PostMapping("/create")
         public ResponseEntity<?> createProject(@RequestBody Project project) {
                 try {
@@ -28,7 +28,7 @@ public class ProjectController {
         }
         // PostmanURL: localhost:8080/project/find?projectId=X
         @GetMapping("/find")
-        public ResponseEntity<?> findProject(@RequestParam(name = "projectId") int projectId) {
+        public ResponseEntity<?> findProject(@RequestParam(required = false, name = "projectId") int projectId) {
                 Project res;
                 try {
                         res = projectService.findOne(projectId);
@@ -40,7 +40,7 @@ public class ProjectController {
         }
         // PostmanURL: localhost:8080/project/updateProject?projectId=X
         @PutMapping("/updateProject")
-        public ResponseEntity<?> updateProject(@RequestBody Project project, @RequestParam(name="projectId") int projectId) {
+        public ResponseEntity<?> updateProject(@RequestBody Project project, @RequestParam(required = false, name="projectId") int projectId) {
                 Project temp;
                 try {
                         temp = projectService.findOne(projectId);
@@ -55,7 +55,7 @@ public class ProjectController {
         }
         // PostmanURL: localhost:8080/project/deleteProject?projectId=X
         @DeleteMapping("/deleteProject")
-        public ResponseEntity<?> deleteProject(@RequestParam(name="projectId") int projectId) {
+        public ResponseEntity<?> deleteProject(@RequestParam(required = false, name="projectId") int projectId) {
                 projectService.delete(projectId);
                 return new ResponseEntity<>(HttpStatus.OK);
         }

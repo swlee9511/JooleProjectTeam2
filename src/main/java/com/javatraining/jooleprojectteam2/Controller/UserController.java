@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @GetMapping("/find")
-    public ResponseEntity<?> findUser(@RequestParam(name = "userName") String userName) {
+    public ResponseEntity<?> findUser(@RequestParam(required = false, name = "userName") String userName) {
         User res;
         try {
             res = userService.find(userName);
@@ -51,13 +51,13 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteUser(@RequestParam(name = "userName") String userName) {
+    public ResponseEntity<?> deleteUser(@RequestParam(required = false, name = "userName") String userName) {
         userService.delete(userName);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/findAllProject")
-    public ResponseEntity<?> findAllProject(@RequestParam(name = "userName") String userName) {
+    public ResponseEntity<?> findAllProject(@RequestParam(required = false, name = "userName") String userName) {
         Set<Project> tmp;
         try {
              tmp = userService.findAllProjectInUser(userName);
@@ -68,7 +68,7 @@ public class UserController {
     }
 
     @PutMapping("/addProject")
-    public ResponseEntity<?> addProject(@RequestParam(name = "userName") String userName, @RequestParam(name = "projectId") int projectId) {
+    public ResponseEntity<?> addProject(@RequestParam(required = false, name = "userName") String userName, @RequestParam(required = false, name = "projectId") int projectId) {
         try {
             User u = userService.find(userName);
             Project p = projectService.findOne(projectId);
