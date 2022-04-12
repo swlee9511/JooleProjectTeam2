@@ -29,7 +29,7 @@ public class ProductController {
 
     // PostmanURL: localhost:8080/product/findProduct?resourceId=X
     @GetMapping("/findProduct")
-    public ResponseEntity<?> findProduct(@RequestParam(name="resourceId") int resourceId) {
+    public ResponseEntity<?> findProduct(@RequestParam(required = false, name="resourceId") int resourceId) {
         Product temp;
         try {
             temp = productService.find(resourceId);
@@ -42,7 +42,7 @@ public class ProductController {
     // PostmanURL: localhost:8080/product/updateProduct?resourceId=X
     // postman body will contain 'mechnicalDetail', 'brand', 'certification', 'modelYear'
     @PutMapping("/updateProduct")
-    public ResponseEntity<?> updateProduct(@RequestBody Product product, @RequestParam(name="resourceId") int resourceId) {
+    public ResponseEntity<?> updateProduct(@RequestBody Product product, @RequestParam(required = false, name="resourceId") int resourceId) {
         Product temp;
         try {
             temp = productService.find(resourceId);
@@ -60,7 +60,7 @@ public class ProductController {
 
     // PostmanURL: localhost:8080/product/deleteProduct?resourceId=X
     @DeleteMapping("/deleteProduct")
-    public ResponseEntity<?> deleteProduct(@RequestParam(name="resourceId") int resourceId) {
+    public ResponseEntity<?> deleteProduct(@RequestParam(required = false, name="resourceId") int resourceId) {
         productService.delete(resourceId);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -50,7 +50,7 @@ public class ProjectProductController {
 
     // PostmanURL: localhost:8080/projectProduct/find?projectProductId=X
     @GetMapping("/find")
-    public ResponseEntity<?> findProjectProduct(@RequestParam(name="projectProductId") int projectProductId) {
+    public ResponseEntity<?> findProjectProduct(@RequestParam(required = false, name="projectProductId") int projectProductId) {
         ProjectProduct temp;
         MappingJacksonValue tempMap;
         try {
@@ -67,9 +67,9 @@ public class ProjectProductController {
 
     // PostmanURL: localhost:8080/projectProduct/updateProjectProduct/?projectProductId=X&projectId=X&resourceId=X
     @PutMapping("/updateProjectProduct")
-    public ResponseEntity<?> updateProjectProduct(@RequestParam(name="projectProductId") int projectProductId,
-                                           @RequestParam(name="projectId") int projectId,
-                                           @RequestParam(name="resourceId") int resourceId) {
+    public ResponseEntity<?> updateProjectProduct(@RequestParam(required = false, name="projectProductId") int projectProductId,
+                                           @RequestParam(required = false, name="projectId") int projectId,
+                                           @RequestParam(required = false, name="resourceId") int resourceId) {
         Project projectTemp;
         Product productTemp;
         ProjectProduct temp;
@@ -95,7 +95,7 @@ public class ProjectProductController {
 
     // PostmanURL: localhost:8080/projectProduct/deleteProjectProduct?projectProductId=X
     @DeleteMapping("/deleteProjectProduct")
-    public ResponseEntity<?> deleteProjectProduct(@RequestParam(name="projectProductId") int projectProductId) {
+    public ResponseEntity<?> deleteProjectProduct(@RequestParam(required = false, name="projectProductId") int projectProductId) {
         ProjectProduct temp;
         try {
             temp = projectProductService.find(projectProductId);

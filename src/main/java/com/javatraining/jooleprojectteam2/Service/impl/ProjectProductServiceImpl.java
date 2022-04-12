@@ -44,7 +44,6 @@ public class ProjectProductServiceImpl implements ProjectProductService {
 
     @Override
     public void delete(ProjectProduct projectproduct) {
-
         projectProductRepository.delete(projectproduct);
     }
 
