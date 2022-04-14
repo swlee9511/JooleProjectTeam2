@@ -1,5 +1,6 @@
 package com.javatraining.jooleprojectteam2.Service.impl;
 
+import com.javatraining.jooleprojectteam2.Entity.Role;
 import com.javatraining.jooleprojectteam2.Entity.User;
 import com.javatraining.jooleprojectteam2.Repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
@@ -21,21 +22,21 @@ class UserServiceImplTest {
     @Test
     void create() {
         userRepository.deleteById("ForService");
-        User user = new User("ForService","owner","123456");
+        User user = new User("ForService", Role.OWNER,"123456");
         userServiceImpl.create(user);
         Assertions.assertEquals(user.getUserName(), userRepository.findById("ForService").get().getUserName());
     }
 
     @Test
     void find() {
-        User user = new User("ForService","owner","123456");
+        User user = new User("ForService",Role.OWNER,"123456");
         userServiceImpl.create(user);
         Assertions.assertEquals(userServiceImpl.find("ForService").getUserName(), "ForService");
     }
 
     @Test
     void updateProfile() {
-        User user = new User("ForService","consumer","6666666666");
+        User user = new User("ForService",Role.OWNER,"6666666666");
         userServiceImpl.updateProfile(user);
         Assertions.assertNotEquals(userRepository.findById("ForService").get().getRole(), "owner");
     }

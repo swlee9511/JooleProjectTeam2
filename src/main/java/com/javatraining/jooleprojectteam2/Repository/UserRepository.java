@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, String> {
     //finds roles starting with string
@@ -15,6 +16,6 @@ public interface UserRepository extends JpaRepository<User, String> {
     //fins userName that contains string, case is ignored
     List <User> findByUserNameContainsIgnoreCase (String str);
 
-
+    Optional<User> findByUserName(String username);
 
 }

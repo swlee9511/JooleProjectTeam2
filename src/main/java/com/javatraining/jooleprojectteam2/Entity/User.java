@@ -16,7 +16,7 @@ public class User {
     @Id
     private String userName;
 
-    private String role;
+    private Role role;
     private String password;
 
     @CreatedDate
@@ -38,7 +38,7 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String role, String password) {
+    public User(String userName, Role role, String password) {
         this.userName = userName;
         this.role = role;
         this.password = password;
@@ -55,11 +55,11 @@ public class User {
         this.userName = userName;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

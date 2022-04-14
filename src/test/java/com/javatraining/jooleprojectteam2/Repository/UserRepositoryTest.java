@@ -1,5 +1,6 @@
 package com.javatraining.jooleprojectteam2.Repository;
 
+import com.javatraining.jooleprojectteam2.Entity.Role;
 import com.javatraining.jooleprojectteam2.Entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,13 +23,13 @@ class UserRepositoryTest {
 
     @Test
     public void saveTest() {
-        User user = new User("AAA","owner","123456");
+        User user = new User("AAA", Role.OWNER,"123456");
         User res = userRepository.save(user);
         Assertions.assertNotEquals(null, res);
     }
     @Test
     public void findIdTest() {
-        User user = new User("AAA","owner","123456");
+        User user = new User("AAA",Role.OWNER,"123456");
         User tmp = userRepository.save(user);
 
         Optional<User> res = userRepository.findById(tmp.getUserName());

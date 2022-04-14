@@ -1,12 +1,20 @@
 package com.javatraining.jooleprojectteam2.Controller;
 
 import com.javatraining.jooleprojectteam2.Entity.Project;
+import com.javatraining.jooleprojectteam2.Entity.Role;
 import com.javatraining.jooleprojectteam2.Entity.User;
 import com.javatraining.jooleprojectteam2.Service.ProjectService;
 import com.javatraining.jooleprojectteam2.Service.UserService;
+import com.javatraining.jooleprojectteam2.Service.impl.MyUserDetailsServiceImpl;
+import com.javatraining.jooleprojectteam2.Util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -18,15 +26,47 @@ public class UserController {
     UserService userService;
     @Autowired
     ProjectService projectService;
+    @Autowired
+    JWTUtil jwtUtil;
+
+    @Autowired
+    private AuthenticationManager myauthenticaitonManager;
+
+    @Autowired
+    private MyUserDetailsServiceImpl userDetailsService;
 
     @PostMapping("/signUp")
     public ResponseEntity<?> createUser(@RequestBody User user) {
+//        if (userService.findByUsername(user.getUsername()) != null) {
+//            return new ResponseEntity<>(HttpStatus.CONFLICT);
+//        }
+        user.setRole(Role.OWNER);
         try {
             userService.create(user);
         } catch(Exception e) {
             return new ResponseEntity<>("{\"error\":\""+e.getMessage() + "\"}", HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+    @PostMapping("/authenticate")
+    public ResponseEntity<?> createAuthenticationToken(@RequestParam(name="username") String username, @RequestParam(name="password") String password)  throws Exception {
+        Authentication authentication;
+        try {
+            authentication = myauthenticaitonManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(username,password)//User.getUsername(), User.getPassword())
+            );
+        }
+        catch (BadCredentialsException e) {
+            throw new Exception("Incorrect username or password", e);
+        }
+        final UserDetails userDetails = (UserDetails)authentication.getPrincipal();
+
+//        final UserDetails userDetails = userDetailsService
+//                .loadUserByUsername(username);//User.getUsername());
+
+        final String jwt = jwtUtil.generateToken(userDetails);
+
+        return  new ResponseEntity<>(jwt, HttpStatus.OK);
     }
 
     @GetMapping("/find")

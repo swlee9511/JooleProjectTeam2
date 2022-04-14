@@ -7,6 +7,7 @@ import com.javatraining.jooleprojectteam2.Exception.UserDoesntExistException;
 import com.javatraining.jooleprojectteam2.Repository.UserRepository;
 import com.javatraining.jooleprojectteam2.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,14 +18,16 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-    //private PasswordEncoder passwordEncoder;//for Spring security later
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public User create(User user) throws UserAlreadyExistException{
         if (userRepository.existsById(user.getUserName())) {
             throw new UserAlreadyExistException("User already exists");
         }
-        user.setPassword(user.getPassword());// change here after enable Spring security
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return user;
     }
