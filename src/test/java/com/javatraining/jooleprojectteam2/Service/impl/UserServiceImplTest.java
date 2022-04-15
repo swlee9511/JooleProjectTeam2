@@ -38,7 +38,7 @@ class UserServiceImplTest {
     void updateProfile() {
         User user = new User("ForService",Role.OWNER,"6666666666");
         userServiceImpl.updateProfile(user);
-        Assertions.assertNotEquals(userRepository.findById("ForService").get().getRole(), "owner");
+        Assertions.assertNotEquals(userRepository.findById("ForService").get().getRole().name(), 1);
     }
 
     @Test

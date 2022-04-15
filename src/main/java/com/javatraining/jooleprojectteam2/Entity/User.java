@@ -16,6 +16,7 @@ public class User {
     @Id
     private String userName;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
     private String password;
 
@@ -30,7 +31,7 @@ public class User {
     private java.util.Date lastUpdated;
 
     // User can have many projects
-    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE},
+    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
                mappedBy="user")
     Set<Project> projectSets = new HashSet<>();
 
