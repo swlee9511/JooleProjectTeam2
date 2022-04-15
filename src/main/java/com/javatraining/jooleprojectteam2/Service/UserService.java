@@ -14,6 +14,6 @@ public interface UserService {
     User find(String username);
     User updateProfile(User user);
     void delete(String userName);
-
+    User findByUsername(String username);
     Set<Project> findAllProjectInUser(String username);
 }
