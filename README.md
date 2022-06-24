@@ -2,6 +2,7 @@
 Itlize Java Training - Group Project Team2 <br>
 http://angularjooleawsbucketfront.s3-website.us-east-2.amazonaws.com/home
 <br> (demo id: tester007, demo pw: 12345)
+<br> For presentation: After logging in, choose a project, search for brand names like Samsung, Lenovo, etc
 
 ## Project Initialization
 * We used IntelliJ Spring Initializr 
