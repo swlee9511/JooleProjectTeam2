@@ -1,5 +1,5 @@
 # JooleProjectTeam2
-Itlize Java Training - Group Project Team2
+Itlize Java Training - Group Project Team2 <br>
 http://angularjooleawsbucketfront.s3-website.us-east-2.amazonaws.com/home
 
 ## Project Initialization
